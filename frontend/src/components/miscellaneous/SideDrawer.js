@@ -10,7 +10,7 @@ import {
   MenuList,
 } from "@chakra-ui/menu";
 import {
-  Drawer,
+  Drawer, 
   DrawerBody,
   DrawerContent,
   DrawerHeader,
@@ -50,24 +50,27 @@ function SideDrawer() {
     navigate('/');
   }
 
-  const accessChat= async(userId)=>{
-    try{
-      setLoading(true);
+  const accessChat = async (userId) => {
+    // console.log(userId);
+
+    try {
+      setLoadingChat(true);
       const config = {
         headers: {
-          "Content-Type": "Application/json",
+          "Content-type": "application/json",
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const {data} = await axios.post('/api/chat',{userId},config);
-      if(chats.find((c)=>c._id == data.id)); setChats([data,...chats])
+      const { data } = await axios.post(`/api/chat`, { userId }, config);
+
+      if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);
       setLoadingChat(false);
       onClose();
-    }catch(e){
+    } catch (error) {
       toast({
-        title: "Error Occured!",
-        description: "Failed to Load the Search Results",
+        title: "Error fetching the chat",
+        description: error.message,
         status: "error",
         duration: 5000,
         isClosable: true,

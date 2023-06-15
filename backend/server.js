@@ -11,6 +11,6 @@ app.get('/', (req, res) => {
     res.send('Api is running');
 })
 app.use('/api/user',userRoutes);
-// app.use('/api/chat',chatRoutes);
+app.use('/api/chat',chatRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT,console.log("hello world!"));
