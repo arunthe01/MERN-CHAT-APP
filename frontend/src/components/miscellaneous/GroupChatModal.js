@@ -46,6 +46,7 @@ import {
     };
   
     const handleSearch = async (query) => {
+      console.log(query);
       setSearch(query);
       if (!query) {
         return;
@@ -151,7 +152,7 @@ import {
               </FormControl>
               <FormControl>
                 <Input
-                  placeholder="Add Users eg: John, Piyush, Jane"
+                  placeholder="Add Users"
                   mb={1}
                   onChange={(e) => handleSearch(e.target.value)}
                 />
@@ -177,6 +178,7 @@ import {
                       user={user}
                       handleFunction={() => handleGroup(user)}
                     />
+                    // console.log(user)
                   ))
               )}
             </ModalBody>

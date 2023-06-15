@@ -73,7 +73,7 @@ let navigate = useNavigate();
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setPicLoading(false);
-      navigate('/chat');
+      navigate('/chats');
     } catch (error) {
       toast({
         title: "Error Occured!",
